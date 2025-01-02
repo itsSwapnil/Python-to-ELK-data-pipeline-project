@@ -1,0 +1,59 @@
+SELECT
+    t101.sr_accnt_arn     AS accnt_arn,
+    t101.sr_accnt_name    AS accnt_name,
+    t101.sr_accnt_status  AS accnt_status,
+    t101.sr_accnt_type_cd AS accnt_type_cd,
+    t101.assess_dt,
+    t101.assess_name,
+    t101.assess_score,
+    t101.assess_status,
+    t101.sr_asset_lob     AS asset_lob,
+    t101.asset_num,
+    t101.sr_asset_pl      AS asset_pl,
+    t101.sr_asset_ppl     AS asset_ppl,
+    t101.asset_vc,
+    t101.con_contact_id,
+    t101.con_crn_no,
+    t101.con_fst_name,
+    t101.con_last_name,
+    t101.con_phone_nocell,
+    t101.con_work_phone,
+    t101.divn_name,
+    t101.dlr_area,
+    t101.dlr_bu,
+    t101.dlr_code,
+    t101.dlr_loc,
+    t101.dlr_name,
+    t101.dlr_org_city,
+    t101.dlr_region,
+    t101.dlr_sls_state,
+    t101.last_service_date,
+    t103.par_accnt_arn,
+    t103.par_accnt_name,
+    t103.par_accnt_src_row_id,
+    t103.par_accnt_type_cd,
+    to_char(t101.src_row_wid) AS src_row_wid,
+    t101.sr_ins_product,
+    t101.sr_open_dt,
+    t101.sr_reason_cd,
+    t101.sr_sr_num,
+    t101.sr_status
+FROM
+    t_invoice  t101
+    LEFT OUTER JOIN t_product t102 ON t101.asset_prod_wid = t102.src_row_wid
+    LEFT OUTER JOIN t_account t103 ON t101.accnt_wid = t103.accnt_row_wid
+WHERE
+        t101.dlr_bu = 'TMCV'
+    AND t101.sr_accnt_arn IS NOT NULL
+    AND t102.lob IN ( 'Buses', 'HCV Cargo', 'ICV Trucks', 'LCV', 'HCV Const',
+                      'MCV Trucks', 'PCV - Venture', 'Pickups', 'SCV Cargo', 'SCVPass',
+                      'ScPass' )
+    AND t101.dlr_name <> 'TMCV'
+    AND t101.dlr_name <> 'Unspecified'
+    AND t101.sr_accnt_arn <> 'PF'  
+    AND t101.etl_proc_wid = (
+        SELECT
+            etl_proc_wid
+        FROM
+            w_param_g_gdm
+    )
