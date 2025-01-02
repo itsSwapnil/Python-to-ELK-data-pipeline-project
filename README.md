@@ -1,4 +1,4 @@
-# Python to ELK Pipeline
+# Python to ELK data Pipeline
 
 This project implements a pipeline to extract data from an Oracle database using SQL, transform the data as per business requirements, and index it into an Elasticsearch (ELK) instance. The pipeline ensures efficient data handling, transformation, and indexing for analytics and reporting purposes.
 
