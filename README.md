@@ -47,11 +47,9 @@ ________________________________________
 •	Oracle Database with access credentials
 
 •	Elasticsearch instance (v7.10+ recommended)
+
 Python Dependencies
-Install dependencies using:
-bash
-Copy code
-pip install -r requirements.txt
+Install dependencies using: pip install -r requirements.txt
 Required Python Packages
 
 •	cx_Oracle
@@ -85,8 +83,10 @@ es_credential = {
 ________________________________________
 
 ## How to Run
-1.	Place your SQL query in the Query.txt file.
-2.	Execute the Python script with the target Elasticsearch index name as an argument:
+1.	Import all .csv file in your database for tables.
+2.	Test the sql query in database.
+3.	Place your Python script in VScode and test the SQL database and ELK connections.
+4.	Execute the Python script with the target Elasticsearch index name as an argument:
 
 ________________________________________
 ## Key Functions
