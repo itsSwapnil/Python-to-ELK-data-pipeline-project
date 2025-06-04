@@ -111,6 +111,15 @@ ________________________________________
 •	Include support for incremental data loading based on timestamps.
 •	Implement a configuration file for better parameter management.
 ________________________________________
+
+🙋 Author
+
+LinkedIn: http://www.linkedin.com/in/SwapnilTaware
+
+GitHub: https://github.com/itsSwapnil
+
+---
+
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
